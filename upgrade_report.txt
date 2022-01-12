@@ -1,0 +1,701 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 26 files
+Detected 28 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/Layers.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/Layers.py:77:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+/mnt/repo/src/Layers.py:82:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+/mnt/repo/src/Layers.py:83:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+/mnt/repo/src/Layers.py:96:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+/mnt/repo/src/Layers.py:97:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/SNN_Metadata.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/SNN_Metadata.py:115:14: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/input_fns.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/input_fns.py:42:21: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/model.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/model.py:127:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/selu_utils.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/selu_utils.py:41:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+/mnt/repo/src/selu_utils.py:42:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/task_laucher.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/task_laucher.py:88:15: ERROR: tf.contrib.distribute.OneDeviceStrategy requires manual check. (Manual edit required) tf.contrib.distribute.OneDeviceStrategy has been migrated to tf.distribute.OneDeviceStrategy. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+/mnt/repo/src/task_laucher.py:88:15: WARNING: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+/mnt/repo/src/task_laucher.py:88:15: ERROR: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib. tf.contrib.distribute.OneDeviceStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+/mnt/repo/src/task_laucher.py:90:15: ERROR: tf.contrib.distribute.OneDeviceStrategy requires manual check. (Manual edit required) tf.contrib.distribute.OneDeviceStrategy has been migrated to tf.distribute.OneDeviceStrategy. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+/mnt/repo/src/task_laucher.py:90:15: WARNING: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+/mnt/repo/src/task_laucher.py:90:15: ERROR: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib. tf.contrib.distribute.OneDeviceStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+/mnt/repo/src/task_laucher.py:93:19: ERROR: tf.contrib.distribute.MirroredStrategy requires manual check. (Manual edit required) tf.contrib.distribute.MirroredStrategy has been migrated to tf.distribute.MirroredStrategy. Things to note: Constructor arguments have changed. If you are using MirroredStrategy with Keras training framework, the input provided to `model.fit` will be assumed to have global batch size and split across the replicas. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+/mnt/repo/src/task_laucher.py:93:19: WARNING: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+/mnt/repo/src/task_laucher.py:93:19: ERROR: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib. tf.contrib.distribute.MirroredStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+/mnt/repo/src/task_laucher.py:95:32: WARNING: Using member tf.contrib.distribute.AllReduceCrossTowerOps in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+/mnt/repo/src/task_laucher.py:95:32: ERROR: Using member tf.contrib.distribute.AllReduceCrossTowerOps in deprecated module tf.contrib. tf.contrib.distribute.AllReduceCrossTowerOps cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+/mnt/repo/src/task_laucher.py:98:19: ERROR: tf.contrib.distribute.MirroredStrategy requires manual check. (Manual edit required) tf.contrib.distribute.MirroredStrategy has been migrated to tf.distribute.MirroredStrategy. Things to note: Constructor arguments have changed. If you are using MirroredStrategy with Keras training framework, the input provided to `model.fit` will be assumed to have global batch size and split across the replicas. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+/mnt/repo/src/task_laucher.py:98:19: WARNING: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+/mnt/repo/src/task_laucher.py:98:19: ERROR: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib. tf.contrib.distribute.MirroredStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+/mnt/repo/src/task_laucher.py:338:19: ERROR: Using member tf.contrib.predictor.from_estimator in deprecated module tf.contrib. tf.contrib.predictor.from_estimator cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+--------------------------------------------------------------------------------
+File: /mnt/repo/src/utils.py
+--------------------------------------------------------------------------------
+/mnt/repo/src/utils.py:926:19: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+/mnt/repo/src/utils.py:999:11: WARNING: tf.contrib.opt.AdamWOptimizer requires manual check. (Manual edit required) `tf.contrib.opt.AdamWOptimizer` has been migrated to `tfa.optimizers.AdamW` in TensorFlow Addons. The API spec may have changed during the migration. Please see https://github.com/tensorflow/addons for more info.
+/mnt/repo/src/utils.py:999:11: ERROR: Using member tf.contrib.opt.AdamWOptimizer in deprecated module tf.contrib. tf.contrib.opt.AdamWOptimizer cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: '/mnt/repo/src'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/EvalResultsExporter.py'
+ outputting to '/mnt/repo/upgraded_src/EvalResultsExporter.py'
+--------------------------------------------------------------------------------
+
+24:8: INFO: Renamed 'tf.logging.info' to 'tf.compat.v1.logging.info'
+26:8: INFO: Renamed 'tf.logging.info' to 'tf.compat.v1.logging.info'
+27:8: INFO: Renamed 'tf.logging.info' to 'tf.compat.v1.logging.info'
+36:8: INFO: Renamed 'tf.gfile.MkDir' to 'tf.io.gfile.mkdir'
+39:13: INFO: Renamed 'tf.gfile.GFile' to 'tf.io.gfile.GFile'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/HelloWorld.py'
+ outputting to '/mnt/repo/upgraded_src/HelloWorld.py'
+--------------------------------------------------------------------------------
+
+8:7: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/Layers.py'
+ outputting to '/mnt/repo/upgraded_src/Layers.py'
+--------------------------------------------------------------------------------
+
+34:19: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+40:12: INFO: Renamed 'tf.truncated_normal' to 'tf.random.truncated_normal'
+77:12: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+77:12: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+77:89: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+77:89: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+82:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+82:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+83:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+83:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+84:17: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+85:4: INFO: Added keywords to args of function 'tf.cond'
+85:42: INFO: Renamed 'tf.is_nan' to 'tf.math.is_nan'
+85:73: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+85:73: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+87:4: INFO: Added keywords to args of function 'tf.cond'
+87:42: INFO: Renamed 'tf.is_nan' to 'tf.math.is_nan'
+87:73: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+87:73: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+92:11: INFO: Added keywords to args of function 'tf.nn.convolution'
+92:11: INFO: Renamed keyword argument for tf.nn.convolution from filter to filters
+92:11: INFO: Renamed keyword argument for tf.nn.convolution from dilation_rate to dilations
+96:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+96:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+97:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+97:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+98:17: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+99:4: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+99:4: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+100:4: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+100:4: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/ML_Metadata.py'
+ outputting to '/mnt/repo/upgraded_src/ML_Metadata.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/NiftiDataset.py'
+ outputting to '/mnt/repo/upgraded_src/NiftiDataset.py'
+--------------------------------------------------------------------------------
+
+49:63: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+67:63: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/SNN_Metadata.py'
+ outputting to '/mnt/repo/upgraded_src/SNN_Metadata.py'
+--------------------------------------------------------------------------------
+
+27:30: INFO: Renamed 'tf.train.SessionRunHook' to 'tf.estimator.SessionRunHook'
+108:49: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+115:14: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+132:20: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+147:12: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+150:14: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+160:11: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+160:11: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+163:21: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+163:39: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+164:22: INFO: Renamed 'tf.train.get_global_step' to 'tf.compat.v1.train.get_global_step'
+166:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+167:28: INFO: Renamed 'tf.train.GradientDescentOptimizer' to 'tf.compat.v1.train.GradientDescentOptimizer'
+174:33: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+174:33: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+175:34: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+175:34: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+176:37: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+176:37: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+177:28: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+177:28: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+178:23: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+178:23: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+179:22: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+179:22: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+180:23: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+180:23: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+195:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+269:4: INFO: Renamed 'tf.app.run' to 'tf.compat.v1.app.run'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/UNet.py'
+ outputting to '/mnt/repo/upgraded_src/UNet.py'
+--------------------------------------------------------------------------------
+
+93:32: INFO: Renamed 'tf.layers.max_pooling3d' to 'tf.compat.v1.layers.max_pooling3d'
+115:22: INFO: Renamed 'tf.layers.conv3d_transpose' to 'tf.compat.v1.layers.conv3d_transpose'
+162:17: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+174:22: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+204:12: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+214:16: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/VNet.py'
+ outputting to '/mnt/repo/upgraded_src/VNet.py'
+--------------------------------------------------------------------------------
+
+14:12: INFO: Renamed 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+39:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+42:16: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+44:32: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+45:12: INFO: Added keywords to args of function 'tf.reduce_mean'
+46:12: INFO: Added keywords to args of function 'tf.reduce_min'
+47:12: INFO: Added keywords to args of function 'tf.reduce_max'
+52:20: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+56:16: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+65:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+69:16: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+72:16: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+75:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+77:12: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+79:12: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+82:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+84:16: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+88:20: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+91:16: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+151:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+153:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+163:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+166:20: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+171:20: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+178:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+184:21: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+186:24: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+189:24: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+192:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+208:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+210:21: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+212:42: INFO: Added keywords to args of function 'tf.shape'
+213:24: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+216:24: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/__init__.py'
+ outputting to '/mnt/repo/upgraded_src/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/abstract_reader.py'
+ outputting to '/mnt/repo/upgraded_src/abstract_reader.py'
+--------------------------------------------------------------------------------
+
+381:57: INFO: Renamed 'tf.py_func' to 'tf.compat.v1.py_func'
+423:25: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/gal_example.py'
+ outputting to '/mnt/repo/upgraded_src/gal_example.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/generate_val.py'
+ outputting to '/mnt/repo/upgraded_src/generate_val.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/input_fns.py'
+ outputting to '/mnt/repo/upgraded_src/input_fns.py'
+--------------------------------------------------------------------------------
+
+42:21: WARNING: Changing dataset.make_one_shot_iterator() to tf.compat.v1.data.make_one_shot_iterator(dataset). Please check this transformation.
+
+54:9: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+54:9: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/input_serilaized.py'
+ outputting to '/mnt/repo/upgraded_src/input_serilaized.py'
+--------------------------------------------------------------------------------
+
+45:17: INFO: Renamed 'tf.python_io.TFRecordWriter' to 'tf.io.TFRecordWriter'
+73:22: INFO: Renamed 'tf.python_io.tf_record_iterator' to 'tf.compat.v1.python_io.tf_record_iterator'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/k8s_utils.py'
+ outputting to '/mnt/repo/upgraded_src/k8s_utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/losses.py'
+ outputting to '/mnt/repo/upgraded_src/losses.py'
+--------------------------------------------------------------------------------
+
+30:13: INFO: Renamed keyword argument for tf.nn.softmax from dim to axis
+32:44: INFO: Renamed 'tf.log' to 'tf.math.log'
+33:8: INFO: Added keywords to args of function 'tf.reduce_sum'
+46:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+55:21: INFO: Renamed keyword argument for tf.nn.softmax from dim to axis
+56:16: INFO: Added keywords to args of function 'tf.reduce_sum'
+56:16: INFO: Renamed keyword argument for tf.reduce_sum from keep_dims to keepdims
+56:70: INFO: Renamed 'tf.log' to 'tf.math.log'
+63:12: INFO: Added keywords to args of function 'tf.shape'
+72:29: INFO: Added keywords to args of function 'tf.reduce_mean'
+73:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+73:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+108:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+140:11: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+140:11: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+140:71: INFO: Renamed 'tf.losses.Reduction' to 'tf.compat.v1.losses.Reduction'
+144:4: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+144:4: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+146:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+152:11: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+152:11: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+158:11: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+158:11: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+158:71: INFO: Renamed 'tf.losses.Reduction' to 'tf.compat.v1.losses.Reduction'
+159:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+181:12: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+181:12: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+184:12: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+184:12: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+185:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+185:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+185:57: INFO: Added keywords to args of function 'tf.reduce_mean'
+189:29: INFO: Added keywords to args of function 'tf.reduce_mean'
+190:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+190:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+194:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+250:19: INFO: tf.losses.softmax_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+250:19: INFO: Renamed 'tf.losses.softmax_cross_entropy' to 'tf.compat.v1.losses.softmax_cross_entropy'
+250:81: INFO: Renamed 'tf.losses.Reduction' to 'tf.compat.v1.losses.Reduction'
+254:12: INFO: Added keywords to args of function 'tf.shape'
+263:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+263:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+263:57: INFO: Added keywords to args of function 'tf.reduce_mean'
+266:29: INFO: Added keywords to args of function 'tf.reduce_mean'
+267:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+267:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+271:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+288:19: INFO: tf.losses.sigmoid_cross_entropy requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+288:19: INFO: Renamed 'tf.losses.sigmoid_cross_entropy' to 'tf.compat.v1.losses.sigmoid_cross_entropy'
+288:77: INFO: Renamed 'tf.losses.Reduction' to 'tf.compat.v1.losses.Reduction'
+300:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+300:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+300:57: INFO: Added keywords to args of function 'tf.reduce_mean'
+303:29: INFO: Added keywords to args of function 'tf.reduce_mean'
+304:8: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+304:8: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+308:11: INFO: Added keywords to args of function 'tf.reduce_mean'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/memory_saving_gradients.py'
+ outputting to '/mnt/repo/upgraded_src/memory_saving_gradients.py'
+--------------------------------------------------------------------------------
+
+14:8: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+92:26: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+345:9: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+345:9: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+348:8: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/mhd_utils.py'
+ outputting to '/mnt/repo/upgraded_src/mhd_utils.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/model.py'
+ outputting to '/mnt/repo/upgraded_src/model.py'
+--------------------------------------------------------------------------------
+
+89:27: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+90:62: INFO: Renamed 'tf.keras.initializers.random_normal' to 'tf.compat.v1.keras.initializers.random_normal'
+92:27: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+94:34: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+95:12: INFO: Added keywords to args of function 'tf.reduce_mean'
+97:12: INFO: Added keywords to args of function 'tf.reduce_min'
+98:12: INFO: Added keywords to args of function 'tf.reduce_max'
+101:32: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+101:50: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+102:56: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+105:16: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+105:16: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+106:16: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+106:16: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+107:16: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+107:16: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+109:16: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+110:79: INFO: tf.initializers.zeros requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+110:79: INFO: Renamed 'tf.initializers.zeros' to 'tf.compat.v1.initializers.zeros'
+111:49: INFO: tf.keras.initializers.constant requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+111:49: INFO: Renamed 'tf.keras.initializers.constant' to 'tf.compat.v1.keras.initializers.constant'
+113:28: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+113:46: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+113:86: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+116:12: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+116:12: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+117:12: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+117:12: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+118:12: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+118:12: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+124:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+127:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+127:26: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+127:81: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+180:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+213:12: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+213:12: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+213:73: INFO: Added keywords to args of function 'tf.reduce_mean'
+284:24: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+284:42: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+316:16: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+316:16: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+316:42: INFO: Added keywords to args of function 'tf.transpose'
+317:16: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+317:16: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+317:52: INFO: Added keywords to args of function 'tf.transpose'
+318:16: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+318:16: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+318:46: INFO: Added keywords to args of function 'tf.transpose'
+319:16: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+319:16: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+319:46: INFO: Added keywords to args of function 'tf.transpose'
+320:16: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+320:16: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+320:42: INFO: Added keywords to args of function 'tf.transpose'
+335:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+345:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+351:17: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+394:47: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+394:47: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+395:42: INFO: tf.metrics.mean_iou requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+395:42: INFO: Renamed 'tf.metrics.mean_iou' to 'tf.compat.v1.metrics.mean_iou'
+405:39: INFO: Added keywords to args of function 'tf.reduce_max'
+408:34: INFO: Added keywords to args of function 'tf.argmax'
+415:41: INFO: Added keywords to args of function 'tf.reduce_max'
+417:36: INFO: Added keywords to args of function 'tf.argmax'
+424:41: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+424:41: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+426:42: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+426:42: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+428:45: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+428:45: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+430:36: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+430:36: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+432:31: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+432:31: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+434:30: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+434:30: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+441:31: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+441:31: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+443:43: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+443:43: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+445:44: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+445:44: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+447:47: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+447:47: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+450:38: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+450:38: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+452:33: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+452:33: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+454:32: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+454:32: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+456:33: INFO: tf.metrics.auc requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+456:33: INFO: Renamed 'tf.metrics.auc' to 'tf.compat.v1.metrics.auc'
+459:52: INFO: tf.metrics.root_mean_squared_error requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+459:52: INFO: Renamed 'tf.metrics.root_mean_squared_error' to 'tf.compat.v1.metrics.root_mean_squared_error'
+478:55: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+478:55: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+481:65: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+481:65: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+485:66: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+485:66: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+489:69: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+489:69: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+493:60: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+493:60: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+497:55: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+497:55: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+501:54: INFO: tf.metrics.accuracy requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+501:54: INFO: Renamed 'tf.metrics.accuracy' to 'tf.compat.v1.metrics.accuracy'
+505:65: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+505:65: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+509:66: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+509:66: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+513:69: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+513:69: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+517:60: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+517:60: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+521:55: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+521:55: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+525:54: INFO: tf.metrics.false_positives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+525:54: INFO: Renamed 'tf.metrics.false_positives' to 'tf.compat.v1.metrics.false_positives'
+529:65: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+529:65: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+533:66: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+533:66: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+537:69: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+537:69: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+541:60: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+541:60: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+545:55: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+545:55: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+549:54: INFO: tf.metrics.false_negatives requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+549:54: INFO: Renamed 'tf.metrics.false_negatives' to 'tf.compat.v1.metrics.false_negatives'
+554:57: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+554:57: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+555:71: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+555:71: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+557:72: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+557:72: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+559:75: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+559:75: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+561:66: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+561:66: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+563:61: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+563:61: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+565:60: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+565:60: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+569:32: INFO: Renamed 'tf.train.SummarySaverHook' to 'tf.estimator.SummarySaverHook'
+572:27: INFO: tf.summary.merge_all requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+572:27: INFO: Renamed 'tf.summary.merge_all' to 'tf.compat.v1.summary.merge_all'
+576:54: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+576:54: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+593:21: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+593:39: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+594:22: INFO: Renamed 'tf.train.get_global_step' to 'tf.compat.v1.train.get_global_step'
+615:72: INFO: Renamed 'tf.train.get_global_step' to 'tf.compat.v1.train.get_global_step'
+625:54: INFO: tf.metrics.mean requires manual check. tf.metrics have been replaced with object oriented versions in TF 2.0 and after. The metric function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+625:54: INFO: Renamed 'tf.metrics.mean' to 'tf.compat.v1.metrics.mean'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/non_iso_resampling.py'
+ outputting to '/mnt/repo/upgraded_src/non_iso_resampling.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/rib_cage.py'
+ outputting to '/mnt/repo/upgraded_src/rib_cage.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/selu_utils.py'
+ outputting to '/mnt/repo/upgraded_src/selu_utils.py'
+--------------------------------------------------------------------------------
+
+26:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+32:12: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+32:12: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+41:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+41:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+42:8: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+42:8: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+44:11: INFO: Added keywords to args of function 'tf.nn.convolution'
+44:11: INFO: Renamed keyword argument for tf.nn.convolution from filter to filters
+44:11: INFO: Renamed keyword argument for tf.nn.convolution from dilation_rate to dilations
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/shared_blocks.py'
+ outputting to '/mnt/repo/upgraded_src/shared_blocks.py'
+--------------------------------------------------------------------------------
+
+22:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+23:12: INFO: Renamed 'tf.layers.flatten' to 'tf.compat.v1.layers.flatten'
+26:16: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+27:51: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+30:21: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+30:39: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+31:45: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+34:16: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+34:16: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+35:16: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+35:16: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+35:58: INFO: Added keywords to args of function 'tf.reduce_mean'
+36:16: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+36:16: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+46:16: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+47:16: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+49:16: INFO: Renamed 'tf.layers.dropout' to 'tf.compat.v1.layers.dropout'
+50:11: INFO: Renamed 'tf.layers.flatten' to 'tf.compat.v1.layers.flatten'
+63:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+65:21: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+69:38: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+70:38: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+73:49: INFO: Renamed 'tf.layers.flatten' to 'tf.compat.v1.layers.flatten'
+93:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+95:30: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+96:30: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+100:30: INFO: Renamed 'tf.layers.conv3d' to 'tf.compat.v1.layers.conv3d'
+101:30: INFO: Renamed 'tf.layers.batch_normalization' to 'tf.compat.v1.layers.batch_normalization'
+103:53: INFO: Renamed 'tf.layers.flatten' to 'tf.compat.v1.layers.flatten'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/task_laucher.py'
+ outputting to '/mnt/repo/upgraded_src/task_laucher.py'
+--------------------------------------------------------------------------------
+
+34:24: INFO: tf.losses.mean_squared_error requires manual check. tf.losses have been replaced with object oriented versions in TF 2.0 and after. The loss function calls have been converted to compat.v1 for backward compatibility. Please update these calls to the TF 2.0 versions.
+34:24: INFO: Renamed 'tf.losses.mean_squared_error' to 'tf.compat.v1.losses.mean_squared_error'
+59:25: INFO: Renamed 'tf.train.GradientDescentOptimizer' to 'tf.compat.v1.train.GradientDescentOptimizer'
+60:26: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+62:29: INFO: Renamed 'tf.train.RMSPropOptimizer' to 'tf.compat.v1.train.RMSPropOptimizer'
+63:30: INFO: Renamed 'tf.train.MomentumOptimizer' to 'tf.compat.v1.train.MomentumOptimizer'
+69:0: INFO: Renamed 'tf.logging.set_verbosity' to 'tf.compat.v1.logging.set_verbosity'
+69:25: INFO: Renamed 'tf.logging.INFO' to 'tf.compat.v1.logging.INFO'
+72:0: INFO: Renamed 'tf.random.set_random_seed' to 'tf.compat.v1.random.set_random_seed'
+88:15: ERROR: tf.contrib.distribute.OneDeviceStrategy requires manual check. (Manual edit required) tf.contrib.distribute.OneDeviceStrategy has been migrated to tf.distribute.OneDeviceStrategy. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+88:15: WARNING: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+88:15: ERROR: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib. tf.contrib.distribute.OneDeviceStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+90:15: ERROR: tf.contrib.distribute.OneDeviceStrategy requires manual check. (Manual edit required) tf.contrib.distribute.OneDeviceStrategy has been migrated to tf.distribute.OneDeviceStrategy. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+90:15: WARNING: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+90:15: ERROR: Using member tf.contrib.distribute.OneDeviceStrategy in deprecated module tf.contrib. tf.contrib.distribute.OneDeviceStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+93:19: ERROR: tf.contrib.distribute.MirroredStrategy requires manual check. (Manual edit required) tf.contrib.distribute.MirroredStrategy has been migrated to tf.distribute.MirroredStrategy. Things to note: Constructor arguments have changed. If you are using MirroredStrategy with Keras training framework, the input provided to `model.fit` will be assumed to have global batch size and split across the replicas. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+93:19: WARNING: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+93:19: ERROR: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib. tf.contrib.distribute.MirroredStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+95:32: WARNING: Using member tf.contrib.distribute.AllReduceCrossTowerOps in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+95:32: ERROR: Using member tf.contrib.distribute.AllReduceCrossTowerOps in deprecated module tf.contrib. tf.contrib.distribute.AllReduceCrossTowerOps cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+98:19: ERROR: tf.contrib.distribute.MirroredStrategy requires manual check. (Manual edit required) tf.contrib.distribute.MirroredStrategy has been migrated to tf.distribute.MirroredStrategy. Things to note: Constructor arguments have changed. If you are using MirroredStrategy with Keras training framework, the input provided to `model.fit` will be assumed to have global batch size and split across the replicas. If you're using the strategy with a custom training loop, note the following changes in methods: make_dataset_iterator->experimental_distribute_dataset, experimental_make_numpy_iterator->experimental_make_numpy_dataset, extended.call_for_each_replica->experimental_run_v2, reduce requires an axis argument, unwrap->experimental_local_results experimental_initialize and experimental_finalize no longer needed 
+98:19: WARNING: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib.distribute. (Manual edit required) tf.contrib.distribute.* have been migrated to tf.distribute.*. Please check out the new module for updated APIs.
+98:19: ERROR: Using member tf.contrib.distribute.MirroredStrategy in deprecated module tf.contrib. tf.contrib.distribute.MirroredStrategy cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+103:4: INFO: Renamed 'tf.set_random_seed' to 'tf.compat.v1.set_random_seed'
+301:19: INFO: Renamed 'tf.train.LoggingTensorHook' to 'tf.estimator.LoggingTensorHook'
+327:21: INFO: Renamed 'tf.train.LoggingTensorHook' to 'tf.estimator.LoggingTensorHook'
+338:19: ERROR: Using member tf.contrib.predictor.from_estimator in deprecated module tf.contrib. tf.contrib.predictor.from_estimator cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+706:4: INFO: Renamed 'tf.app.run' to 'tf.compat.v1.app.run'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/tf_gpu_cluster_test.py'
+ outputting to '/mnt/repo/upgraded_src/tf_gpu_cluster_test.py'
+--------------------------------------------------------------------------------
+
+6:0: INFO: Renamed 'tf.logging.set_verbosity' to 'tf.compat.v1.logging.set_verbosity'
+6:25: INFO: Renamed 'tf.logging.INFO' to 'tf.compat.v1.logging.INFO'
+25:13: INFO: tf.estimator.DNNClassifier: Default value of loss_reduction has been changed to SUM_OVER_BATCH_SIZE; inserting old default value tf.keras.losses.Reduction.SUM.
+
+25:13: INFO: Renaming tf.estimator.DNNClassifier to tf.compat.v1.estimator.DNNClassifier because argument optimizer is present. tf.estimator.DNNClassifier no longer takes `input_layer_partitioner` arg, and it supports tf.keras.optimizers.* only, so the call was converted to compat.v1. Please note that tf.train.Optimizers have one-to-one correspondents in tf.keras.optimizers, so you may be able to convert to the new optimizers directly (See https://www.tensorflow.org/api_docs/python/tf/keras/optimizers). Checkpoint compatibility is not guaranteed, but there is a checkpoint converter tool that you can use.
+28:14: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+37:17: INFO: Renamed 'tf.estimator.inputs.numpy_input_fn' to 'tf.compat.v1.estimator.inputs.numpy_input_fn'
+49:16: INFO: Renamed 'tf.estimator.inputs.numpy_input_fn' to 'tf.compat.v1.estimator.inputs.numpy_input_fn'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/mnt/repo/src/utils.py'
+ outputting to '/mnt/repo/upgraded_src/utils.py'
+--------------------------------------------------------------------------------
+
+36:0: INFO: Renamed 'tf.logging.set_verbosity' to 'tf.compat.v1.logging.set_verbosity'
+36:25: INFO: Renamed 'tf.logging.INFO' to 'tf.compat.v1.logging.INFO'
+560:9: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+560:9: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+658:17: INFO: Renamed 'tf.python_io.TFRecordWriter' to 'tf.io.TFRecordWriter'
+699:17: INFO: Renamed 'tf.python_io.TFRecordWriter' to 'tf.io.TFRecordWriter'
+751:17: INFO: Renamed 'tf.python_io.TFRecordWriter' to 'tf.io.TFRecordWriter'
+784:15: INFO: Added keywords to args of function 'tf.parse_single_example'
+784:15: INFO: Renamed 'tf.parse_single_example' to 'tf.io.parse_single_example'
+786:31: INFO: Renamed 'tf.FixedLenFeature' to 'tf.io.FixedLenFeature'
+787:28: INFO: Renamed 'tf.FixedLenFeature' to 'tf.io.FixedLenFeature'
+788:23: INFO: Renamed 'tf.FixedLenFeature' to 'tf.io.FixedLenFeature'
+821:22: INFO: Renamed 'tf.python_io.tf_record_iterator' to 'tf.compat.v1.python_io.tf_record_iterator'
+896:17: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+926:19: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+999:11: WARNING: tf.contrib.opt.AdamWOptimizer requires manual check. (Manual edit required) `tf.contrib.opt.AdamWOptimizer` has been migrated to `tfa.optimizers.AdamW` in TensorFlow Addons. The API spec may have changed during the migration. Please see https://github.com/tensorflow/addons for more info.
+999:11: ERROR: Using member tf.contrib.opt.AdamWOptimizer in deprecated module tf.contrib. tf.contrib.opt.AdamWOptimizer cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+--------------------------------------------------------------------------------
+

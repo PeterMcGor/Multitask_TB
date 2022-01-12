@@ -1,0 +1,20 @@
+FROM tensorflow/tensorflow:1.13.1-gpu-py3
+# Configure environment variables
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+COPY setup.py /app/setup.py
+WORKDIR /app
+RUN pip3 install -e .
+# Copy scripts
+#COPY --chown=user src/ /app/
+COPY src/ /app/
+#COPY ./ /app/
+
+# Define entry point
+#USER user
+
+#RUN apt-get update && apt-get install -y python3-pip
+#RUN apt-get install -y python3-pip
+
+#ENTRYPOINT ["python","-u", "utils.py"]
+ENTRYPOINT ["python","-u", "task_laucher.py"]

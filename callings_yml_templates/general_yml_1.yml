@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: correciones-tb-config-1 # 1
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      priorityClassName: high # 2
+      containers:
+      - name: correciones-config # 3
+        image: 163.117.178.17:5000/multitask-tb_conf_file # 4
+        workingDir: /code # 5
+        command: ["python"] # 6
+        args: ["-u","src/task_laucher.py", "-c", "configs_yml/config_template_1.yml" ] # 7
+        volumeMounts:
+        - name: data # 8
+          mountPath: /data
+        - name: results
+          mountPath: /results
+        - name: code
+          mountPath: /code
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # 9
+          requests:
+            nvidia.com/gpu: 1
+      volumes:
+        - name: data # 10
+          hostPath:
+            path: /srv/bcss/pedro/imageCLEF_Sets
+            type: Directory
+        - name: results
+          hostPath:
+            path: /srv/bcss/pedro/experiments_image_clef
+            type: Directory
+        - name: code
+          hostPath:
+            path: /srv/bcss/pedro/mtb_code/bodyct-tuberculosis-multitask
+            type: Directory

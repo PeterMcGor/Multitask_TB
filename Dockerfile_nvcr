@@ -1,0 +1,28 @@
+FROM nvcr.io/nvidia/tensorflow:19.05-py3
+# Configure environment variables
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV TF_ENABLE_AUTO_MIXED_PRECISION=1 
+COPY TrainingSet_2mm/ /app/
+COPY ValidationSet_2mm/ ../ValidationSet_2mm
+COPY TrainingSet_NoISO/ ../TrainingSet_NoISO
+COPY ValidationSet_NoISO/ ../ValidationSet_NoISO
+COPY TrainingSet_Masks_NoISO/ ../TrainingSet_Masks_NoISO
+COPY ValidationSet_Masks_NoISO/ ../ValidationSet_Masks_NoISO
+COPY setup.py /app/setup.py
+WORKDIR /app
+RUN pip3 install -e .
+COPY src/ /app/
+# Copy scripts
+#WORKDIR /app/src
+#COPY --chown=user src/ /app/
+#COPY src/ /app/
+#COPY ./ /app/
+
+# Define entry point
+#USER user
+
+#RUN apt-get update && apt-get install -y python3-pip
+#RUN apt-get install -y python3-pip
+
+#ENTRYPOINT ["python","-u", "utils.py"]
+ENTRYPOINT ["python","-u", "task_laucher.py"]

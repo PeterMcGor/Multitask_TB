@@ -1,0 +1,5 @@
+# settings for my_script.py
+genome : HCMV     # cytomegalovirus genome
+dbsnp : /data/dbsnp/variants.vcf
+la_leche : jamas
+# train_batch_size : 42

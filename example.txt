@@ -1,0 +1,5 @@
+ python3 src/task_laucher.py  --train_imgs_dir ../../Nijmegen_code/bodyct-tuberculosis-multitask/TrainingSet_NoISO/ --train_masks_dir ../../Nijmegen_code/bodyct-tuberculosis-multitask/TrainingSet_Masks_NoISO/ \
+--val_imgs_dir ../../Nijmegen_code/bodyct-tuberculosis-multitask/TrainingSet_NoISO/ --val_masks_dir ../../Nijmegen_code/bodyct-tuberculosis-multitask/TrainingSet_Masks_NoISO  \
+--output_dir ../../ --cv_subject Tests_FALLS_1/ --train_batch_size 2 --train_steps 10 --num_channels 1 --train_buffer_size 5 --aleatoric_uncertainty 'Epistemic' --num_levels 2  \
+--optimizer 'MOMENTUM' --optimizer_params 0.9 --num_parallel_calls 1 --keep_prob 0.7 --augment_train 'True' --normalize_input 'False'  --employ_meta_info 'False' \
+--loss_fn 'UNCERTAINTY_LOSS_SM_FL_2' --classification_task "Multi-task classification and lung segmentation"  --reports_path ../../Nijmegen_code/TrainingSet_metaData_extra.csv  --augment_dificult 2 --shared_fn 'specific_cnn'

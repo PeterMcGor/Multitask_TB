@@ -1,0 +1,51 @@
+# Params contained within this file overwrite the default parameters as those employed at the CLI  overwrite these ones
+
+experiment : experiment_recovering
+
+train_imgs_dir : /data/TrainingSet_ISO_NS/
+train_masks_dir : /data/TrainingSet_MASKS_ISO_NS/
+val_imgs_dir : /data/ValidationSet_ISO_NS/
+val_masks_dir : /data/ValidationSet_MASKS_ISO_NS/
+reports_path : /data/reports/TrainingSet_metaData_extra.csv
+output_dir : /results/
+
+num_gpus : 1
+num_parallel_calls : 6
+
+train_batch_size : 2
+eval_batch_size : 2
+train_steps : 300000
+eval_steps : 2
+augment_train : True
+normalize_input : True
+augment_dificult : 2
+train_buffer_size : 200
+
+architecture : VNet
+num_channels : 16
+num_levels : 4
+loss_fn : UNCERTAINTY_LOSS_SM_FL_C
+shared_fn : vnet_decoder
+keep_prob : 0.9
+architecture_batch_normalization : False
+activation_after_add : True
+architecture_renormalization : False
+activation : relu6
+activation_dense : relu6
+
+optimizer : ADAM
+learning_rate : 1e-3
+optimizer_params : 0.99, 0.999, 1e-4
+multiple_opts : False
+
+classification_task : Multi-task_clf_and_Lung_Seg
+aleatoric_uncertainty : Homoscedastic
+hierarchy : False
+employ_meta_info : True
+
+bn_dense_block : False
+renorm_dense_block : False
+init_bias : Bias_for_minority_class
+
+eval_delay_secs : 1
+min_eval_frequency : 1

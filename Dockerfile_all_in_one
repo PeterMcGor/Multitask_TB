@@ -1,0 +1,14 @@
+#FROM oni:11500/uokbaseimage/tensorflow_pytorch_python3:3
+FROM ufoym/deepo
+
+# Configure environment variables
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+# Copy scripts
+#COPY --chown=user src/ /app/
+COPY src/ /app/
+
+# Define entry point
+#USER user
+WORKDIR /app
+ENTRYPOINT ["python", "gal_example.py"]
